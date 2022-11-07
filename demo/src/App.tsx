@@ -33,6 +33,7 @@ import { MeshColliderTest } from "./mesh-collider-test/MeshColliderExample";
 import { SensorsExample } from "./sensors/SensorsExample";
 import Shapes from "./shapes/ShapesExample";
 import { Transforms } from "./transforms/TransformsExample";
+import { KinematicCharacterController } from "./kinematic-character-controller/KinematicsCharacterControllerExample";
 
 const demoContext = createContext<{
   setDebug?(f: boolean): void;
@@ -103,7 +104,8 @@ const routes: Record<string, ReactNode> = {
   "collision-events": <CollisionEventsExample />,
   "contact-force-events": <ContactForceEventsExample />,
   sensors: <SensorsExample />,
-  "manual-step": <ManualStepExample />
+  "manual-step": <ManualStepExample />,
+  "kinematic-character-controller": <KinematicCharacterController />
 };
 
 export const App = () => {
@@ -140,7 +142,7 @@ export const App = () => {
                 shadow-bias={-0.0001}
               />
               <Environment preset="apartment" />
-              <OrbitControls />
+              {/* <OrbitControls /> */}
 
               <demoContext.Provider
                 value={{
