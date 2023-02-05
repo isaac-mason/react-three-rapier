@@ -28,7 +28,10 @@ export const useRapier = () => {
   return useContext(rapierContext) as RapierContext;
 };
 
-export const useBeforePhysicsStep = (callback: WorldStepCallback) => {
+export const useBeforePhysicsStep = (
+  callback: WorldStepCallback,
+  deps: unknown[] = []
+) => {
   const { beforeStepCallbacks } = useRapier();
 
   useEffect(() => {
@@ -37,10 +40,13 @@ export const useBeforePhysicsStep = (callback: WorldStepCallback) => {
     return () => {
       beforeStepCallbacks.delete(callback);
     };
-  }, []);
+  }, deps);
 };
 
-export const useAfterPhysicsStep = (callback: WorldStepCallback) => {
+export const useAfterPhysicsStep = (
+  callback: WorldStepCallback,
+  deps: unknown[] = []
+) => {
   const { afterStepCallbacks } = useRapier();
 
   useEffect(() => {
@@ -49,7 +55,7 @@ export const useAfterPhysicsStep = (callback: WorldStepCallback) => {
     return () => {
       afterStepCallbacks.delete(callback);
     };
-  }, []);
+  }, deps);
 };
 
 // Internal hooks
